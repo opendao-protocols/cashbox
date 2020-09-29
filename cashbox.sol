@@ -683,7 +683,7 @@ contract StockLiquiditator is ERC20Detailed,ERC20Burnable,ERC20Mintable
 
         // calculate pool token amount to be minted
         uint256 poolTokens = ( (inputDAIAmount.mul(multiplier)).div(PooltoDAI_rate) );
-        mint(sender, poolTokens); //Minting  Pool Token
+        _mint(sender, poolTokens); //Minting  Pool Token
     }
     
     function burnPoolToken(uint256 poolTokenAmount) external {  
