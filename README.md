@@ -5,7 +5,7 @@ Cashbox is a capital efficient market where users can deposit any ERC20 token an
 
 `constructor (address DAITokenAddr,address StockTokenAddr,uint256 daiCap,string memory name,string memory symbol,string memory url) `
 
-1. DAITokenAddr = The address of the ERC20 token used to pr
+1. DAITokenAddr = The address of the ERC20 token used to provide as exchange for the Stock token.
 1. StockTokenAddr = The addressof the stock token
 1. daiCap = The total value in ERC20 token allowed to be in the smart contract after which it 
 1. name = The name of the pool token
