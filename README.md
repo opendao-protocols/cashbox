@@ -3,11 +3,12 @@ Cashbox is a capital efficient market where users can deposit any ERC20 token an
 
 ## Constructor
 
-`constructor (address DAITokenAddr,address StockTokenAddr,uint256 daiCap,string memory name,string memory symbol,string memory url) `
+`constructor (address cashAddress,address stockTokenAddress,uint256 _stockToCashRate,uint256 cashCap,string memory name,string memory symbol,string memory _url) `
 
-1. DAITokenAddr = The address of the ERC20 token used to provide as exchange for the Stock token.
-1. StockTokenAddr = The addressof the stock token
-1. daiCap = The total value in ERC20 token allowed to be in the smart contract after which it 
+1. cashAddress = The address of the ERC20 token used to provide as exchange for the Stock token.
+1. stockTokenAddress = The addressof the stock token
+1. stockToCashRate = Ratio of Stock to Cash
+1. cashCap = The total value in ERC20 token allowed to be in the smart contract after which it will not allow more deposits
 1. name = The name of the pool token
 1. symbol = Symbol of the pool token
 1. url = A string to be saved in the smart contract
@@ -20,20 +21,16 @@ Cashbox is a capital efficient market where users can deposit any ERC20 token an
  Allow the owner to update the URL string.
 
 
-`function updateDAIValuationCap(uint256 daiCap) public onlyOwner returns(uint256)`
+`function updateCashValuationCap(uint256 daiCap) public onlyOwner returns(uint256)`
 
 Allows the owner to update the Upper Cap of the contract.
 
 
- `function changeOwner(address payable newOwner) public onlyOwner`
+`function stockTokenAddress() public view returns (address)`
+
+Returns Stock Token Address
+
  
-Changes the Owner
-
-
-`function updateStockTokenRate(uint256 newRate) public onlyOwner returns(uint256)`
-
-Updates the price of the Stock token relative to the ERC20 token.
-
 
 `function StockTokenAddress() public view returns (address)`
 
@@ -45,7 +42,7 @@ Returns the address fof the stock token.
 Checks if wither address is a zero address or if amount is zero
 
 
- `function contractDAIBalance() public view returns(uint256 daiBalance)`
+ `function contractCashBalance() public view returns(uint256 daiBalance)`
  
  Returns the balance of the ERC20 token.
  
@@ -55,22 +52,18 @@ Checks if wither address is a zero address or if amount is zero
   Returns the balance of the Stock Token.
  
  
-` function stockTokenDAIValuation() internal view returns(uint256)`
+` function stockTokenCashValuation() internal view returns(uint256)`
 
- Returns the Value held in the contract.
+ Returns the Value held in the contract in Cash .
  
  
- `function poolTokenTotalSupply()`
  
-Returns Total Supply of Pool tokens
-
+ `function updatedPoolRate() internal returns (uint256 poolrate)`
  
- `function getUpdatedPoolRate() internal returns (uint256 poolrate)`
- 
- Returns the value of the Pool token in respect to the ERC20 token.
+ Updates the value of the Pool token in respect to the ERC20 token.
  
  
- `function mintPoolToken(uint256 inputDAIAmount) external`
+ `function mintPoolToken(uint256 inputCashAmount) external`
  
  Mints pool tokens if the Upper Cap is not reached, based on the value held in the smart contract.
  
