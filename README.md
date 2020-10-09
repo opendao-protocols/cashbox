@@ -76,7 +76,7 @@ Checks if wither address is a zero address or if amount is zero
  
 `function redeemStockToken(uint256 stockTokenAmount) external`
 
-Trade Stock token for the ERC20 accordint to the excahnge rate.
+Trade Stock token for the ERC20 according to the exchange rate.
 
  
  `function kill() external onlyOwner`
